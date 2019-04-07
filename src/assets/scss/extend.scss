@@ -1,0 +1,19 @@
+// ============================================================
+// Extend
+// 预设样式
+// ============================================================
+@import '@/assets/scss/variable.scss';
+// 全屏
+.full-screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+// flex居中
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

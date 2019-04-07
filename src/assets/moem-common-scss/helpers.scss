@@ -1,0 +1,369 @@
+// ============================================================
+// Helpers
+// ============================================================
+// 灵感源于 Emmet https //emmet.io/
+// 类似于在 HTML Tag 的 class 中直接编写 Emmet 的 CSS 部分
+// position 之类定义后还要定义 top 等其他样式数值的个人认为还是单独写在一起的可读性比较好
+// 所以暂时只收录了常用的部分
+// ============================================================
+// 加入了一些 Moem 自用样式
+// ============================================================
+.m- {
+	// == Moem 自用样式 == //
+	&card {
+		position: relative;
+		background: white;
+		color: #666666;
+		overflow: hidden;
+		border-radius: 4px;
+		box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+	}
+
+	&shadow {
+		box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+	}
+
+	// 浮动
+	&left {
+		float: left;
+	}
+	&right {
+		float: right;
+    }
+    
+    // 显示/隐藏
+    &show, &hide{
+        transition: visibility 256ms, opacity 256ms;
+    }
+    &show{
+        visibility: visible;
+        opacity: 1;
+        iframe{
+            display: block;
+        }
+    }
+    &hide{
+        visibility: hidden;
+        opacity: 0;
+        iframe{
+            display: none;
+        }
+    }
+
+	// 边框
+	&bd-a {
+		border: 1px solid;
+	}
+	&bd-t {
+		border-top: 1px solid;
+	}
+	&bd-b {
+		border-bottom: 1px solid;
+	}
+	&bd-l {
+		border-left: 1px solid;
+	}
+	&bd-r {
+		border-right: 1px solid;
+	}
+	&bd-a, &bd-t, &bd-b, &bd-l, &bd-r {
+		box-sizing: border-box;
+		border-color: rgba(0,0,0,.12);
+	}
+
+	// == Emmet 样式 == //
+	// Background
+	&bg-n {
+		background: none;
+	}
+	&bgi-n {
+		background-image: none;
+	}
+	&bgc-t {
+		background-color: transparent;
+	}
+	&bgr-n {
+		background-repeat: no-repeat;
+	}
+	&bgr-x {
+		background-repeat: repeat-x;
+	}
+	&bgr-y {
+		background-repeat: repeat-y;
+	}
+	&bgr-sp {
+		background-repeat: space;
+	}
+	&bgr-rd {
+		background-repeat: round;
+	}
+	&bga-f {
+		background-attachment: fixed;
+	}
+	&bga-s {
+		background-attachment: scroll;
+	}
+	&bgbk-bb {
+		background-break: bounding-box;
+	}
+	&bgbk-eb {
+		background-break: each-box;
+	}
+	&bgbk-c {
+		background-break: continuous;
+	}
+	&bgcp-bb {
+		background-clip: border-box;
+	}
+	&bgcp-pb {
+		background-clip: padding-box;
+	}
+	&bgcp-cb {
+		background-clip: content-box;
+	}
+	&bgcp-nc {
+		background-clip: no-clip;
+	}
+	&bgo-pb {
+		background-origin: padding-box;
+	}
+	&bgo-bb {
+		background-origin: border-box;
+	}
+	&bgo-cb {
+		background-origin: content-box;
+	}
+	&bgsz-a {
+		background-size: auto;
+	}
+	&bgsz-ct {
+		background-size: contain;
+	}
+	&bgsz-cv {
+		background-size: cover;
+	}
+
+	// Display
+	&d-n {
+		display: none;
+	}
+	&d-b {
+		display: block;
+	}
+	&d-f {
+		display: flex;
+	}
+	&d-if {
+		display: inline-flex;
+	}
+	&d-i {
+		display: inline;
+	}
+	&d-ib {
+		display: inline-block;
+	}
+	&d-li {
+		display: list-item;
+	}
+	&d-ri {
+		display: run-in;
+	}
+	&d-cp {
+		display: compact;
+	}
+	&d-tb {
+		display: table;
+	}
+	&d-itb {
+		display: inline-table;
+	}
+	&d-tbcp {
+		display: table-caption;
+	}
+	&d-tbcl {
+		display: table-column;
+	}
+	&d-tbclg {
+		display: table-column-group;
+	}
+	&d-tbhg {
+		display: table-header-group;
+	}
+	&d-tbfg {
+		display: table-footer-group;
+	}
+	&d-tbr {
+		display: table-row;
+	}
+	&d-tbrg {
+		display: table-row-group;
+	}
+	&d-tbc {
+		display: table-cell;
+	}
+	&d-rb {
+		display: ruby;
+	}
+	&d-rbb {
+		display: ruby-base;
+	}
+	&d-rbbg {
+		display: ruby-base-group;
+	}
+	&d-rbt {
+		display: ruby-text;
+	}
+	&d-rbtg {
+		display: ruby-text-group;
+	}
+
+	// 溢出
+	&ov-v {
+		overflow: visible;
+	}
+	&ov-h {
+		overflow: hidden;
+	}
+	&ov-s {
+		overflow: scroll;
+	}
+	&ov-a {
+		overflow: auto;
+	}
+
+	&ovx-v {
+		overflow-x: visible;
+	}
+	&ovx-h {
+		overflow-x: hidden;
+	}
+	&ovx-s {
+		overflow-x: scroll;
+	}
+	&ovx-a {
+		overflow-x: auto;
+	}
+
+	&ovy-v {
+		overflow-y: visible;
+	}
+	&ovy-h {
+		overflow-y: hidden;
+	}
+	&ovy-s {
+		overflow-y: scroll;
+	}
+	&ovy-a {
+		overflow-y: auto;
+	}
+
+	&ovs-a {
+		overflow-style: auto;
+	}
+	&ovs-s {
+		overflow-style: scrollbar;
+	}
+	&ovs-p {
+		overflow-style: panner;
+	}
+	&ovs-m {
+		overflow-style: move;
+	}
+	&ovs-mq {
+		overflow-style: marquee;
+	}
+
+	// 鼠标指针
+	&cur-a {
+		cursor: auto;
+	}
+	&cur-d {
+		cursor: default;
+	}
+	&cur-c {
+		cursor: crosshair;
+	}
+	&cur-ha {
+		cursor: hand;
+	}
+	&cur-he {
+		cursor: help;
+	}
+	&cur-m {
+		cursor: move;
+	}
+	&cur-p {
+		cursor: pointer;
+	}
+	&cur-t {
+		cursor: text;
+	}
+
+	// 文字位置
+	&ta-l {
+		text-align: left;
+	}
+	&ta-c {
+		text-align: center;
+	}
+	&ta-r {
+		text-align: right;
+	}
+	&ta-j {
+		text-align: justify;
+	}
+
+	// align-content
+	&ac-c {
+		align-content: center;
+	}
+	&ac-fe {
+		align-content: flex-end;
+	}
+	&ac-fs {
+		align-content: flex-start;
+	}
+	&ac-s {
+		align-content: stretch;
+	}
+	&ac-sa {
+		align-content: space-around;
+	}
+	&ac-sb {
+		align-content: space-between;
+	}
+
+	// align-items
+	&ai-b {
+		align-items: baseline;
+	}
+	&ai-c {
+		align-items: center;
+	}
+	&ai-fe {
+		align-items: flex-end;
+	}
+	&ai-fs {
+		align-items: flex-start;
+	}
+	&ai-s {
+		align-items: stretch;
+	}
+
+	// justify-content
+	&jc-c {
+		justify-content: center;
+	}
+	&jc-fe {
+		justify-content: flex-end;
+	}
+	&jc-fs {
+		justify-content: flex-start;
+	}
+	&jc-sa {
+		justify-content: space-around;
+	}
+	&jc-sb {
+		justify-content: space-between;
+	}
+}

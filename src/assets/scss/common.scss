@@ -1,0 +1,123 @@
+// ============================================================
+// Common
+// 全局通用样式
+// ============================================================
+@import '@/assets/scss/extend.scss';
+
+// 调整alertify
+.alertify-logs {
+	.show {
+		font-size: 4vw;
+		@media all and (orientation: landscape) {
+			font-size: 1.8vw;
+		}
+	}
+}
+.alertify-logs.bottom, .alertify-logs:not(.top) {
+	// bottom: calc(#{$height-nav-bottom} + 3vw);
+	@media all and (orientation: landscape) {
+		bottom: 3vw;
+	}
+}
+
+.page {
+	height: 100%;
+}
+.ivu-table-column-center .ivu-table-cell {
+	padding: 0 6px;
+}
+.nav {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	left: 0;
+	.mu-divider {
+		background: rgba(255,255,255,.12);
+	}
+	.mu-appbar {
+		background-color: #263238;
+		color: white;
+	}
+	.mu-drawer {
+		background-color: #263238;
+		border-right: 1px solid rgba(0,0,0,.12);
+		width: $width-of-mu-drawer;
+		 > .mu-divider + .mu-list {
+			height: calc(100vh - #{$height-of-mu-appbar} - 1px);
+			overflow-y: auto;
+			.mu-list {
+				background-color: rgba(0,0,0,.15);
+			}
+			.mu-item-action {
+				min-width: unset;
+			}
+			.mu-item {
+				.mu-item-title, i {
+					// color: $blueGrey800;
+					color: hsla(0,0%,100%,.75);
+					transition: color 360ms;
+				}
+				&:hover {
+					.mu-item-title, i {
+						color: white;
+					}
+				}
+			}
+			.mu-item-title {
+				padding-left: 8px;
+			}
+		}
+		 + .mu-appbar {
+			position: relative;
+			height: $height-of-mu-appbar;
+			margin-left: $width-of-mu-drawer;
+		}
+	}
+}
+.nav + .page {
+	padding-top: $height-of-mu-appbar;
+	padding-left: $width-of-mu-drawer;
+	main {
+		position: relative;
+		// 加载动画
+		.ivu-spin {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: calc(100vh - #{$height-of-mu-appbar});
+			@extend .flex-center ;
+			.demo-spin-icon-load {
+				animation: ani-demo-spin 1s linear infinite;
+			}
+		}
+		@keyframes ani-demo-spin {
+			from {
+				transform: rotate(0deg);
+			}
+			50% {
+				transform: rotate(180deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+		// 默认显示内容
+		.default-frame {
+			padding: 16px 24px;
+		}
+	}
+}
+
+.ivu-table-cell span {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+// 遮罩背景
+.bg-mask {
+	background: rgba(0, 0, 0, .5);
+
+	@extend .full-screen ;
+}

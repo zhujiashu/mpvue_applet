@@ -1,0 +1,18 @@
+// ============================================================
+// Variable
+// 全局通用变量
+// ============================================================
+@import '@/assets/scss/color.scss';
+// 顶部条工具高度
+// $height-tools-bar: 12vw !global;
+
+// 顶部导航条高度
+$height-of-mu-appbar: 64px !global;
+// 侧边导航条宽度
+$width-of-mu-drawer: 230px !global;
+
+// 底部导航条高度
+// $height-nav-bottom: 13.333333vw !global;
+
+// 底部机器人高度 以百分之20最大宽度为基础计算高除以宽
+// $height-nav-bottom-bot: 1vw * 20*(832/651) !global;

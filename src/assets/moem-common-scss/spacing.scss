@@ -1,0 +1,115 @@
+// ============================================================
+// Spacing
+// 基于 Vuetify 修改 https://vuetifyjs.com/zh-Hans/layout/spacing
+// ============================================================
+// Vuetify的是Stylus用的，这里将其改为了SCSS适用的并拓展
+//
+// 将margin或者padding应用于一个元素，范围在 0到5 之间。
+// 每个尺寸增量都设计成与常用Material Design间距对齐。
+// 这些类可以使用m-{property}{direction}-{size}这个格式来应用。.
+// 占位符 property 用来设置间距的类型：
+// m - 对应 margin
+// p - 对应 padding
+//
+// 占位符 direction 指定属性所应用到的方向：
+// t - 对应margin-top或者padding-top属性
+// b - 对应margin-bottom or padding-bottom
+// l - 对应margin-left or padding-left
+// r - 对应margin-right or padding-right
+// x - 同时对应*-left和*-right属性
+// y - 同时对应*-top和*-bottom属性
+//
+// 占位符 size 控制属性的增量：
+// 0 - 将margin或者padding设置为0，会使这些属性被删除
+// 1 - 将margin或者padding属性设置为$spacer * .25
+// 2 - 将margin或者padding属性设置为$spacer * .5
+// 3 - 将margin或者padding属性设置为$spacer
+// 4 - 将margin或者padding属性设置为$spacer * 1.5
+// 5 - 将margin或者padding属性设置为$spacer * 3
+// ============================================================
+
+.m-ma-a {
+	margin: auto;
+}
+
+$spacer: 16px;
+$spacer-x: $spacer;
+$spacer-y: $spacer;
+$spacers: (
+  zero: (
+    x: 0,
+    y: 0
+  ),
+  one: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  two: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  three: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  four: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+  five: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  )
+);
+$i: 0;
+
+@each $level, $spacer in $spacers {
+	.m-mt-#{$i} {
+		margin-top: map-get($spacer, y);
+	}
+	.m-mr-#{$i} {
+		margin-right: map-get($spacer, x);
+	}
+	.m-mb-#{$i} {
+		margin-bottom: map-get($spacer, y);
+	}
+	.m-ml-#{$i} {
+		margin-left: map-get($spacer, x);
+	}
+	.m-mx-#{$i} {
+		margin-left: map-get($spacer, x);
+		margin-right: map-get($spacer, x);
+	}
+	.m-my-#{$i} {
+		margin-top: map-get($spacer, y);
+		margin-bottom: map-get($spacer, y);
+	}
+	.m-ma-#{$i} {
+		margin: map-get($spacer, y) map-get($spacer, x);
+	}
+
+	.m-pt-#{$i} {
+		padding-top: map-get($spacer, y);
+	}
+	.m-pr-#{$i} {
+		padding-right: map-get($spacer, x);
+	}
+	.m-pb-#{$i} {
+		padding-bottom: map-get($spacer, y);
+	}
+	.m-pl-#{$i} {
+		padding-left: map-get($spacer, x);
+	}
+	.m-px-#{$i} {
+		padding-left: map-get($spacer, x);
+		padding-right: map-get($spacer, x);
+	}
+	.m-py-#{$i} {
+		padding-top: map-get($spacer, y);
+		padding-bottom: map-get($spacer, y);
+	}
+	.m-pa-#{$i} {
+		padding: map-get($spacer, y) map-get($spacer, x);
+	}
+	$i: $i + 1;
+}
