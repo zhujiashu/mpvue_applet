@@ -1,31 +1,27 @@
-let globalData = {
-    userInfo: null
+let globalData = {}
+globalData = {
+  userInfo: ''
+}
+export function getUserInfo (cb) {
+  if (globalData.userInfo) {
+    typeof cb === 'function' && cb(globalData.userInfo)
+  } else {
+    wx.login({
+      success: function (res) {
+        console.log(res)
+        wx.getUserInfo({
+          success: function (res) {
+            globalData.userInfo = res.userInfo
+            typeof cb === 'function' && cb(globalData.userInfo)
+          },
+          fail: function (res) {
+            console.log(res)
+          }
+        })
+      }
+    })
   }
-  export function getUserInfo (cb) {
-    var that = this
-    if (this.globalData.userInfo) {
-      typeof cb === 'finction' && cb(this.globalData.userInfo)
-    } else {
-      //调登录接口
-      wx.login({
-        success: function (res) {
-          console.log(res)
-          wx.getUserInfo({
-            success: function (res) {
-              //允许授权
-              that.globalData.userInfo = res.userInfo
-              typeof cb === 'function' && cb(that.globalData.userInfo)
-            },
-            fail: function (res) {
-              //拒绝授权
-              console.log(res)
-            }
-          })
-        }
-      })
-    }
-  }
-  export default {
-    getUserInfo
-  }
-  
+}
+export default {
+  getUserInfo
+}

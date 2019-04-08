@@ -1,18 +1,19 @@
 <template>
-  <div @click="clickHandle">
-
-    <div class="userinfo" @click="bindViewTap">
-      <div class="abc">
-        <div class="aaa">
-          123
-        </div>
-      </div>
-    </div>
+  <div>
+    首页
+    <i-button type="primary" @click="toLogin">这是一个按钮</i-button>
+    <!-- <vue-tab-bar
+      @fetch-index="clickIndexNav"
+      :selectNavIndex=selectNavIndex
+      :needButton="needButton"
+      :handButton="handButton"
+      :btnText="btnText">
+    </vue-tab-bar> -->
   </div>
 </template>
 
 <script>
-import card from '@/components/card'
+// import vueTabBar from '../../components/tabbar/index'
 
 export default {
   data () {
@@ -21,24 +22,20 @@ export default {
   },
 
   components: {
-    card
+    vueTabBar
   },
 
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
-      } else {
-        mpvue.navigateTo({ url })
-      }
-    },
-    clickHandle (ev) {
-      console.log('clickHandle:', ev)
-      // throw {message: 'custom test'}
+    toLogin () {
+      wx.navigateTo({
+        url: '/pages/logs/main'
+      })
     }
   },
-
+  onLoad () {
+    wx.hideTabBar()
+    console.log('onLoad')
+  },
   created () {
     // let app = getApp()
   }
@@ -46,19 +43,5 @@ export default {
 </script>
 
 <style scoped lang=scss>
-.userinfo {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .abc {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    .aaa{
-      color: #fff;
-    }
-  }
-}
+
 </style>
