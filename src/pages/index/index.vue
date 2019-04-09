@@ -1,12 +1,13 @@
 <template>
   <div>
     首页
-    <i-button type="primary" @click="toLogin">这是一个按钮</i-button>
+    <i-button type="primary" @click="toXM">这是一个去项目方的按钮</i-button>
+    <i-button type="primary" @click="toTZ">这是一个去投资方的按钮</i-button>
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import store from '../../vuex/store'
 
 export default {
   data () {
@@ -20,9 +21,6 @@ export default {
     this.a()
   },
   methods: {
-    ...mapActions([
-      'getOrderList'
-    ]),
     async a () {
       console.log('a||||')
       // 调用请求获取订单列表接口
@@ -30,7 +28,14 @@ export default {
       console.log('getOrderList|||||')
       console.log(this.getOrderList)
     },
-    toLogin () {
+    toXM () {
+      store.commit('setTheStatusId', 1)
+      wx.navigateTo({
+        url: '/pages/mainSection/main'
+      })
+    },
+    toTZ () {
+      store.commit('setTheStatusId', 2)
       wx.navigateTo({
         url: '/pages/mainSection/main'
       })

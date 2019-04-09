@@ -1,49 +1,43 @@
 <template>
-  <div>
-    首页
-    <i-button type="primary" @click="toLogin">这是一个按钮</i-button>
-    <vueTabBar></vueTabBar>
+  <div class="full-screen">
+    <project v-if='tabBarId === 1'></project>
+    <meeting v-if='tabBarId === 2'></meeting>
+    <mine v-if='tabBarId === 3'></mine>
+    <agency v-if='tabBarId === 4'></agency>
+    <vueTabBar @getTabBarId='getTabBarId' :tabBarId='tabBarId'></vueTabBar>
   </div>
 </template>
 
 <script>
 import vueTabBar from '../../components/tabbar'
-import {mapActions} from 'vuex'
+import project from '../../components/project'
+import meeting from '../../components/meeting'
+import mine from '../../components/mine'
+import agency from '../../components/agency'
 
 export default {
   data () {
     return {
+      tabBarId: 1
     }
   },
-
   components: {
-    vueTabBar
-  },
-  computed: {
-
+    vueTabBar,
+    project,
+    meeting,
+    mine,
+    agency
   },
   onShow () {
-    this.a()
   },
   methods: {
-    ...mapActions([
-      'getOrderList'
-    ]),
-    async a () {
-      console.log('a||||')
-      // 调用请求获取订单列表接口
-      this.getOrderList('aaa')
-      console.log('getOrderList|||||')
-      console.log(this.getOrderList)
-    },
-    toLogin () {
-      wx.navigateTo({
-        url: '/pages/logs/main'
-      })
+    getTabBarId (res) {
+      this.tabBarId = res
+      console.log('||||||||||' + this.tabBarId)
     }
   },
   onLoad () {
-    console.log('onLoad')
+    console.log('onLoad+++')
   },
   created () {
     // let app = getApp()
