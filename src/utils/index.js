@@ -16,16 +16,17 @@ function formatNumber (n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+// 微信定位
 
-export function formatLocation (longitude, latitude) {
-  longitude = longitude.toFixed(2)
-  latitude = latitude.toFixed(2)
+// export function formatLocation (longitude, latitude) {
+//   longitude = longitude.toFixed(2)
+//   latitude = latitude.toFixed(2)
 
-  return {
-    longitude: longitude.toString().split('.'),
-    latitude: latitude.toString().split('.')
-  }
-}
+//   return {
+//     longitude: longitude.toString().split('.'),
+//     latitude: latitude.toString().split('.')
+//   }
+// }
 
 export function API (apiCode, para) {
   const HOST = '' // 主机名称和端口号
@@ -68,6 +69,6 @@ export function API (apiCode, para) {
 }
 export default {
   formatTime,
-  formatLocation,
+  // formatLocation,
   API
 }

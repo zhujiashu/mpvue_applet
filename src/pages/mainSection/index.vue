@@ -2,16 +2,22 @@
   <div>
     首页
     <i-button type="primary" @click="toLogin">这是一个按钮</i-button>
+    <vueTabBar></vueTabBar>
   </div>
 </template>
 
 <script>
+import vueTabBar from '../../components/tabbar'
 import {mapActions} from 'vuex'
 
 export default {
   data () {
     return {
     }
+  },
+
+  components: {
+    vueTabBar
   },
   computed: {
 
@@ -32,7 +38,7 @@ export default {
     },
     toLogin () {
       wx.navigateTo({
-        url: '/pages/mainSection/main'
+        url: '/pages/logs/main'
       })
     }
   },
